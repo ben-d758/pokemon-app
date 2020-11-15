@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PokemonList from './PokemonList';
+import Pagination from './Pagination';
 import axios from 'axios';
 
 function App() {
@@ -24,10 +25,24 @@ function App() {
     return () => cancel()
   }, [currentPageUrl])
 
+  function gotoNextPage() {
+    setCurrentPageUrl(nextPageUrl)
+  }
+
+  function gotoPrevPage() {
+    setPrevPageUrl(prevPageUrl)
+  }
+
   if (loading) return "Loading..."
 
   return (
-    <PokemonList pokemon={pokemon} />
+    <div>
+      <PokemonList pokemon={pokemon} />
+      <Pagination 
+        gotoNextPage={gotoNextPage}
+        gotoPrevPage={gotoPrevPage}
+      />
+    </div>
   );
 }
 
