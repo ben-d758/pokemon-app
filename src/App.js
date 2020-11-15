@@ -30,7 +30,7 @@ function App() {
   }
 
   function gotoPrevPage() {
-    setPrevPageUrl(prevPageUrl)
+    setCurrentPageUrl(prevPageUrl)
   }
 
   if (loading) return "Loading..."
